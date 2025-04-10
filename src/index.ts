@@ -1,11 +1,11 @@
 import { existsSync } from 'node:fs'
+import process from 'node:process'
 import { ResolverFactory } from 'oxc-resolver'
 import { dirname } from 'pathe'
 
 const RE_JS = /\.[cm]?js$/
 const RE_TS = /\.[cm]?ts$/
 
-// eslint-disable-next-line node/prefer-global/process
 export function createResolver({ cwd = process.cwd() }: { cwd?: string } = {}) {
   const resolver = new ResolverFactory({
     mainFields: ['types', 'typings', 'module', 'main'],

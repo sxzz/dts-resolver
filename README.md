@@ -2,7 +2,7 @@
 
 [![Unit Test](https://github.com/sxzz/dts-resolver/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/dts-resolver/actions/workflows/unit-test.yml)
 
-Resolves TypeScript declaration files for dependencies.
+Resolves TypeScript declaration files for dependencies, powered by [oxc-resolver](https://oxc.rs/docs/guide/usage/resolver.html).
 
 ## Install
 

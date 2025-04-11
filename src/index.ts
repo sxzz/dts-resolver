@@ -6,7 +6,14 @@ import { dirname } from 'pathe'
 const RE_JS = /\.[cm]?js$/
 const RE_TS = /\.[cm]?ts$/
 
-export function createResolver({ cwd = process.cwd() }: { cwd?: string } = {}) {
+export interface Options {
+  cwd?: string
+}
+export type Resolver = (id: string, importer?: string) => string | null
+
+export function createResolver({
+  cwd = process.cwd(),
+}: Options = {}): Resolver {
   const resolver = new ResolverFactory({
     mainFields: ['types', 'typings', 'module', 'main'],
     conditionNames: ['types', 'typings', 'import', 'require'],

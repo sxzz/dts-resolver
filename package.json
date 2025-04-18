@@ -1,6 +1,6 @@
 {
   "name": "dts-resolver",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "packageManager": "pnpm@10.7.1",
   "description": "Resolves TypeScript declaration files for dependencies.",
   "type": "module",

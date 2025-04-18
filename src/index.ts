@@ -8,10 +8,12 @@ const RE_TS = /\.[cm]?ts$/
 
 export interface Options {
   cwd?: string
+  tsconfig?: string
 }
 export type Resolver = (id: string, importer?: string) => string | null
 
 export function createResolver({
+  tsconfig,
   cwd = process.cwd(),
 }: Options = {}): Resolver {
   const resolver = new ResolverFactory({
@@ -19,6 +21,9 @@ export function createResolver({
     conditionNames: ['types', 'typings', 'import', 'require'],
     extensions: ['.d.ts', '.d.mts', '.d.cts', '.ts', '.mts', '.cts'],
     modules: ['node_modules', 'node_modules/@types'],
+    tsconfig: tsconfig
+      ? { configFile: tsconfig, references: 'auto' }
+      : undefined,
   })
 
   return (id: string, importer?: string): string | null => {

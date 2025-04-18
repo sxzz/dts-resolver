@@ -1,4 +1,4 @@
-import { relative } from 'node:path'
+import { resolve, relative } from 'node:path'
 import process from 'node:process'
 import { describe, expect, test } from 'vitest'
 import { createResolver } from '../src'
@@ -57,6 +57,14 @@ describe('resolver', () => {
     expectPath(resolver('vue')).toMatchInlineSnapshot(`"vue/dist/vue.d.mts"`)
     expectPath(resolver('@vue/reactivity')).toMatchInlineSnapshot(
       `"@vue/reactivity/dist/reactivity.d.ts"`,
+    )
+  })
+
+  test.only('paths', () => {
+    const tsconfig = resolve(__dirname, './tsconfig-test.json')
+    const resolver = createResolver({ tsconfig })
+    expectPath(resolver('lib/alias.ts', __filename)).toMatchInlineSnapshot(
+      `"tests/fixtures/alias.ts"`,
     )
   })
 

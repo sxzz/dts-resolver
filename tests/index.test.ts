@@ -1,4 +1,4 @@
-import { resolve, relative } from 'node:path'
+import { relative, resolve } from 'node:path'
 import process from 'node:process'
 import { describe, expect, test } from 'vitest'
 import { createResolver } from '../src'
@@ -60,7 +60,7 @@ describe('resolver', () => {
     )
   })
 
-  test.only('paths', () => {
+  test('paths', () => {
     const tsconfig = resolve(__dirname, './tsconfig-test.json')
     const resolver = createResolver({ tsconfig })
     expectPath(resolver('lib/alias.ts', __filename)).toMatchInlineSnapshot(

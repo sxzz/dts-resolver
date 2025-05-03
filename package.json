@@ -1,7 +1,7 @@
 {
   "name": "dts-resolver",
   "version": "1.1.0",
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.10.0",
   "description": "Resolves TypeScript declaration files for dependencies.",
   "type": "module",
   "license": "MIT",
@@ -40,26 +40,25 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "oxc-resolver": "^6.0.0",
+    "oxc-resolver": "^7.0.1",
     "pathe": "^2.0.3"
   },
   "devDependencies": {
-    "@babel/parser": "^7.27.0",
-    "@babel/types": "^7.27.0",
-    "@sxzz/eslint-config": "^6.1.2",
+    "@babel/parser": "^7.27.1",
+    "@babel/types": "^7.27.1",
+    "@sxzz/eslint-config": "^6.2.0",
     "@sxzz/prettier-config": "^2.2.1",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.14.1",
+    "@types/node": "^22.15.3",
     "@types/yargs": "^17.0.33",
     "@vue/reactivity": "^3.5.13",
     "bumpp": "^10.1.0",
-    "eslint": "^9.25.1",
+    "eslint": "^9.26.0",
     "fast-glob": "^3.3.3",
     "magic-string": "^0.30.17",
     "magic-string-ast": "^0.9.1",
     "prettier": "^3.5.3",
-    "tsdown": "^0.9.5",
-    "tsx": "^4.19.3",
+    "tsdown": "^0.11.0-beta.3",
     "typescript": "^5.8.3",
     "vitest": "^3.1.2",
     "vue": "^3.5.13"

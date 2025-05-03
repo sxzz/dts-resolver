@@ -1,82 +1,123 @@
-import { relative, resolve } from 'node:path'
+import path from 'node:path'
 import process from 'node:process'
+import * as ts from 'typescript'
 import { describe, expect, test } from 'vitest'
 import { createResolver } from '../src'
 
-const resolver = createResolver()
+const resolver = createResolver({ resolveNodeModules: true })
+
+function buildExts(name: string) {
+  return [
+    name,
+    `${name}.js`,
+    `${name}.mjs`,
+    `${name}.cjs`,
+    `${name}.ts`,
+    `${name}.mts`,
+    `${name}.cts`,
+    `${name}.jsx`,
+    `${name}.tsx`,
+    `${name}.d`,
+  ]
+}
 
 describe('resolver', () => {
-  test('node modules', () => {
-    expectPath(resolver('node:fs')).toBe(null)
-    expectPath(resolver('node')).toMatchInlineSnapshot(
-      `"@types/node/index.d.ts"`,
-    )
+  const CASES: Array<string> = [
+    'node',
+    'magic-string-ast',
+    'magic-string',
+    'fast-glob',
+    '@babel/parser',
+    'yargs',
+    'debug',
+    'vue',
+    '@vue/reactivity',
+    'pathe',
+    'oxc-resolver',
+    'eslint',
+
+    './fixtures/js-with-dts',
+    ...buildExts('./fixtures/js-with-dts/index'),
+    ...buildExts('./fixtures/same-name/main'),
+    './fixtures/jsx',
+    './fixtures/jsx.js',
+    './fixtures/jsx.jsx',
+    './fixtures/jsx.ts',
+    './fixtures/jsx.tsx',
+
+    './fixtures/tsx',
+    './fixtures/jsx.ts',
+    './fixtures/jsx.tsx',
+    './fixtures/jsx.js',
+    './fixtures/jsx.jsx',
+
+    '../src',
+    '../src/index',
+    '../src/index.ts',
+    '../src/index.js',
+
+    '../package.json',
+    '../tsconfig.json',
+    '../eslint.config.js',
+
+    'node:fs',
+    'whatever',
+    '../package',
+    '../README.md',
+    '../pnpm-lock.yaml',
+    '../.gitignore',
+  ]
+
+  test.each(CASES)('%s', (id) => {
+    const resolved = resolver(id, __filename)
+    const tsResolved = tsResolve(id, __filename)
+    expect(resolved).toBe(tsResolved)
   })
 
-  test('magic-string-ast', () => {
-    expectPath(resolver('magic-string-ast')).toMatchInlineSnapshot(
-      `"magic-string-ast/dist/index.d.ts"`,
-    )
-    expectPath(
-      resolver('magic-string-ast/dist/index.js'),
-    ).toMatchInlineSnapshot(`"magic-string-ast/dist/index.d.ts"`)
-  })
-
-  test('magic-string', () => {
-    expectPath(resolver('magic-string')).toMatchInlineSnapshot(
-      `"magic-string/dist/magic-string.es.d.mts"`,
-    )
-  })
-
-  test('fast-glob', () => {
-    expectPath(resolver('fast-glob')).toMatchInlineSnapshot(
-      `"fast-glob/out/index.d.ts"`,
-    )
-  })
-
-  test('@babel/*', () => {
-    expectPath(resolver('@babel/parser')).toMatchInlineSnapshot(
-      `"@babel/parser/typings/babel-parser.d.ts"`,
-    )
+  test('@babel/types', () => {
     expectPath(resolver('@babel/types')).toMatchInlineSnapshot(
       `"@babel/types/lib/index-legacy.d.ts"`,
     )
   })
 
-  test('@types/*', () => {
-    expectPath(resolver('yargs')).toMatchInlineSnapshot(
-      `"@types/yargs/index.d.mts"`,
-    )
-
-    expectPath(resolver('debug')).toMatchInlineSnapshot(
-      `"@types/debug/index.d.ts"`,
-    )
-  })
-
-  test('vue', () => {
-    expectPath(resolver('vue')).toMatchInlineSnapshot(`"vue/dist/vue.d.mts"`)
-    expectPath(resolver('@vue/reactivity')).toMatchInlineSnapshot(
-      `"@vue/reactivity/dist/reactivity.d.ts"`,
-    )
-  })
-
   test('paths', () => {
-    const tsconfig = resolve(__dirname, './tsconfig-test.json')
+    const tsconfig = path.resolve(__dirname, './tsconfig-test.json')
     const resolver = createResolver({ tsconfig })
-    expectPath(resolver('lib/alias.ts', __filename)).toMatchInlineSnapshot(
-      `"tests/fixtures/alias.ts"`,
+    expect(resolver('lib/alias.ts', __filename)).toBe(
+      tsResolve('lib/alias.ts', __filename, tsconfig),
     )
-  })
-
-  test('not exists', () => {
-    expectPath(resolver('whatever')).toMatchInlineSnapshot(`null`)
   })
 })
 
-function expectPath(path: string | null) {
-  if (typeof path === 'string')
-    path = relative(process.cwd(), path)
+function expectPath(value: string | null) {
+  if (typeof value === 'string')
+    value = path
+      .relative(process.cwd(), value)
       .replaceAll('\\', '/')
       .replaceAll(/.+node_modules\//g, '')
-  return expect(path)
+  return expect(value)
+}
+
+function tsResolve(id: string, importer: string, tsconfig?: string) {
+  let compilerOptions: ts.CompilerOptions = {}
+  if (tsconfig) {
+    const readResult = ts.readConfigFile(tsconfig, ts.sys.readFile)
+    const config = ts.parseJsonConfigFileContent(
+      readResult.config,
+      ts.sys,
+      path.dirname(tsconfig),
+    )
+    compilerOptions = config.options
+  }
+  const resolved = ts.resolveModuleName(
+    id,
+    importer,
+    {
+      moduleResolution: ts.ModuleResolutionKind.Bundler,
+      resolveJsonModule: true,
+      ...compilerOptions,
+    },
+    ts.sys,
+  )
+  return resolved.resolvedModule?.resolvedFileName ?? null
 }

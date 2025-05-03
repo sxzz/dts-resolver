@@ -70,5 +70,7 @@ const ALLOW_EXTENSIONS = [
   '.json',
 ]
 function ensureValue(value: string | null): string | null {
-  return value && ALLOW_EXTENSIONS.includes(extname(value)) ? value : null
+  return value && ALLOW_EXTENSIONS.includes(extname(value))
+    ? value.replaceAll('\\', '/')
+    : null
 }

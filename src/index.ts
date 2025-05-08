@@ -68,6 +68,9 @@ const ALLOW_EXTENSIONS = [
   '.mts',
   '.tsx',
   '.json',
+  '.vue',
+  '.svelte',
+  '.astro',
 ]
 function ensureValue(value: string | null): string | null {
   return value && ALLOW_EXTENSIONS.includes(extname(value))

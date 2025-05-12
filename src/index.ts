@@ -1,4 +1,3 @@
-import { createRequire } from 'node:module'
 import { dirname, extname } from 'node:path'
 import process from 'node:process'
 
@@ -16,11 +15,9 @@ export function createResolver({
   resolveNodeModules = false,
   ResolverFactory,
 }: Options = {}): Resolver {
-  ResolverFactory ||= (
-    createRequire(import.meta.url)(
-      'oxc-resolver',
-    ) as typeof import('oxc-resolver')
-  ).ResolverFactory
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  ResolverFactory ||= (require('oxc-resolver') as typeof import('oxc-resolver'))
+    .ResolverFactory
   const resolver = new ResolverFactory({
     mainFields: ['types', 'typings', 'module', 'main'],
     conditionNames: ['types', 'typings', 'import', 'require'],

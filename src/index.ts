@@ -1,12 +1,12 @@
-import { extname } from 'node:path'
+import { createRequire } from 'node:module'
+import { dirname, extname } from 'node:path'
 import process from 'node:process'
-import { ResolverFactory } from 'oxc-resolver'
-import { dirname } from 'pathe'
 
 export interface Options {
   cwd?: string
   tsconfig?: string
   resolveNodeModules?: boolean
+  ResolverFactory?: typeof import('oxc-resolver').ResolverFactory
 }
 export type Resolver = (id: string, importer?: string) => string | null
 
@@ -14,7 +14,13 @@ export function createResolver({
   tsconfig,
   cwd = process.cwd(),
   resolveNodeModules = false,
+  ResolverFactory,
 }: Options = {}): Resolver {
+  ResolverFactory ||= (
+    createRequire(import.meta.url)(
+      'oxc-resolver',
+    ) as typeof import('oxc-resolver')
+  ).ResolverFactory
   const resolver = new ResolverFactory({
     mainFields: ['types', 'typings', 'module', 'main'],
     conditionNames: ['types', 'typings', 'import', 'require'],

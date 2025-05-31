@@ -40,7 +40,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
-    "oxc-resolver": "^9.0.2"
+    "oxc-resolver": ">=11.0.0"
   },
   "peerDependenciesMeta": {
     "oxc-resolver": {
@@ -61,6 +61,7 @@
     "fast-glob": "^3.3.3",
     "magic-string": "^0.30.17",
     "magic-string-ast": "^0.9.1",
+    "oxc-resolver": "^11.0.0",
     "prettier": "^3.5.3",
     "tsdown": "^0.12.5",
     "typescript": "^5.8.3",

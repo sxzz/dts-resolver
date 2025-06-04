@@ -38,7 +38,7 @@ export function createResolver({
       '.js': ['.d.ts', '.ts', '.tsx', '.js', '.jsx'],
       '.jsx': ['.d.ts', '.ts', '.tsx', '.jsx', '.js'],
       '.mjs': ['.d.mts', '.mts', '.mjs'],
-      '.cjs': ['.d.cts', '.cts', ' .cjs'],
+      '.cjs': ['.d.cts', '.cts', '.cjs'],
 
       '.ts': ['.d.ts', '.ts', '.tsx', '.js', '.jsx'],
       '.tsx': ['.d.ts', '.tsx', '.ts', '.js', '.jsx'],

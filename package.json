@@ -1,7 +1,7 @@
 {
   "name": "dts-resolver",
   "version": "2.1.0",
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "description": "Resolves TypeScript declaration files for dependencies.",
   "type": "module",
   "license": "MIT",
@@ -48,9 +48,9 @@
     }
   },
   "devDependencies": {
-    "@babel/parser": "^7.27.4",
+    "@babel/parser": "^7.27.5",
     "@babel/types": "^7.27.3",
-    "@sxzz/eslint-config": "^7.0.1",
+    "@sxzz/eslint-config": "^7.0.2",
     "@sxzz/prettier-config": "^2.2.1",
     "@types/debug": "^4.1.12",
     "@types/node": "^22.15.29",
@@ -61,11 +61,11 @@
     "fast-glob": "^3.3.3",
     "magic-string": "^0.30.17",
     "magic-string-ast": "^0.9.1",
-    "oxc-resolver": "^11.0.0",
+    "oxc-resolver": "^11.1.0",
     "prettier": "^3.5.3",
-    "tsdown": "^0.12.5",
+    "tsdown": "^0.12.6",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.4",
+    "vitest": "^3.2.1",
     "vue": "^3.5.16"
   },
   "engines": {

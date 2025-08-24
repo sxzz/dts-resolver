@@ -1,6 +1,8 @@
-# dts-resolver [![npm](https://img.shields.io/npm/v/dts-resolver.svg)](https://npmjs.com/package/dts-resolver)
+# dts-resolver
 
-[![Unit Test](https://github.com/sxzz/dts-resolver/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/dts-resolver/actions/workflows/unit-test.yml)
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Unit Test][unit-test-src]][unit-test-href]
 
 Resolves TypeScript declaration files for dependencies, powered by [oxc-resolver](https://oxc.rs/docs/guide/usage/resolver.html).
 
@@ -33,4 +35,13 @@ resolver('fast-glob') // .../node_modules/fast-glob/out/index.d.ts
 
 ## License
 
-[MIT](./LICENSE) License © 2025 [Kevin Deng](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2025-PRESENT [Kevin Deng](https://github.com/sxzz)
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/dts-resolver.svg
+[npm-version-href]: https://npmjs.com/package/dts-resolver
+[npm-downloads-src]: https://img.shields.io/npm/dm/dts-resolver
+[npm-downloads-href]: https://www.npmcharts.com/compare/dts-resolver?interval=30
+[unit-test-src]: https://github.com/sxzz/dts-resolver/actions/workflows/unit-test.yml/badge.svg
+[unit-test-href]: https://github.com/sxzz/dts-resolver/actions/workflows/unit-test.yml

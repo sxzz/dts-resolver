@@ -33,4 +33,4 @@ resolver('fast-glob') // .../node_modules/fast-glob/out/index.d.ts
 
 ## License
 
-[MIT](./LICENSE) License © 2025 [三咲智子 Kevin Deng](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2025 [Kevin Deng](https://github.com/sxzz)

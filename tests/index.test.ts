@@ -28,6 +28,8 @@ describe('resolver', () => {
     'magic-string',
     'fast-glob',
     '@babel/parser',
+    '@babel/generator', // definitely typed
+    '@babel/types', // typesVersions field
     'yargs',
     'debug',
     'vue',

@@ -61,7 +61,7 @@ export function createResolver({
   }
 }
 
-const ALLOW_EXTENSIONS = [
+const ALLOW_EXTENSIONS = new Set([
   '.js',
   '.cjs',
   '.mjs',
@@ -74,9 +74,9 @@ const ALLOW_EXTENSIONS = [
   '.vue',
   '.svelte',
   '.astro',
-]
+])
 function ensureValue(value: string | null): string | null {
-  return value && ALLOW_EXTENSIONS.includes(extname(value))
+  return value && ALLOW_EXTENSIONS.has(extname(value))
     ? value.replaceAll('\\', '/')
     : null
 }

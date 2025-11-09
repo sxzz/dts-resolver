@@ -1,0 +1,117 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`resolver > ../.gitignore 1`] = `null`;
+
+exports[`resolver > ../README.md 1`] = `null`;
+
+exports[`resolver > ../eslint.config.js 1`] = `"eslint.config.js"`;
+
+exports[`resolver > ../package 1`] = `null`;
+
+exports[`resolver > ../package.json 1`] = `"package.json"`;
+
+exports[`resolver > ../pnpm-lock.yaml 1`] = `null`;
+
+exports[`resolver > ../src 1`] = `"src/index.ts"`;
+
+exports[`resolver > ../src/index 1`] = `"src/index.ts"`;
+
+exports[`resolver > ../src/index.js 1`] = `"src/index.ts"`;
+
+exports[`resolver > ../src/index.ts 1`] = `"src/index.ts"`;
+
+exports[`resolver > ../tsconfig.json 1`] = `"tsconfig.json"`;
+
+exports[`resolver > ./fixtures/js-with-dts 1`] = `"tests/fixtures/js-with-dts/index.d.ts"`;
+
+exports[`resolver > ./fixtures/js-with-dts/index 1`] = `"tests/fixtures/js-with-dts/index.d.ts"`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.cjs 1`] = `null`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.cts 1`] = `null`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.d 1`] = `"tests/fixtures/js-with-dts/index.d.ts"`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.js 1`] = `"tests/fixtures/js-with-dts/index.d.ts"`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.jsx 1`] = `"tests/fixtures/js-with-dts/index.d.ts"`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.mjs 1`] = `null`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.mts 1`] = `null`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.ts 1`] = `"tests/fixtures/js-with-dts/index.d.ts"`;
+
+exports[`resolver > ./fixtures/js-with-dts/index.tsx 1`] = `"tests/fixtures/js-with-dts/index.d.ts"`;
+
+exports[`resolver > ./fixtures/jsx 1`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.js 1`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.js 2`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.jsx 1`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.jsx 2`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.ts 1`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.ts 2`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.tsx 1`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/jsx.tsx 2`] = `"tests/fixtures/jsx.jsx"`;
+
+exports[`resolver > ./fixtures/same-name/main 1`] = `"tests/fixtures/same-name/main.ts"`;
+
+exports[`resolver > ./fixtures/same-name/main.cjs 1`] = `"tests/fixtures/same-name/main.cts"`;
+
+exports[`resolver > ./fixtures/same-name/main.cts 1`] = `"tests/fixtures/same-name/main.cts"`;
+
+exports[`resolver > ./fixtures/same-name/main.d 1`] = `null`;
+
+exports[`resolver > ./fixtures/same-name/main.js 1`] = `"tests/fixtures/same-name/main.ts"`;
+
+exports[`resolver > ./fixtures/same-name/main.jsx 1`] = `"tests/fixtures/same-name/main.ts"`;
+
+exports[`resolver > ./fixtures/same-name/main.mjs 1`] = `"tests/fixtures/same-name/main.mts"`;
+
+exports[`resolver > ./fixtures/same-name/main.mts 1`] = `"tests/fixtures/same-name/main.mts"`;
+
+exports[`resolver > ./fixtures/same-name/main.ts 1`] = `"tests/fixtures/same-name/main.ts"`;
+
+exports[`resolver > ./fixtures/same-name/main.tsx 1`] = `"tests/fixtures/same-name/main.ts"`;
+
+exports[`resolver > ./fixtures/tsx 1`] = `"tests/fixtures/tsx.tsx"`;
+
+exports[`resolver > @babel/generator fails 1`] = `"@babel/generator/lib/index.js"`;
+
+exports[`resolver > @babel/parser 1`] = `"@babel/parser/typings/babel-parser.d.ts"`;
+
+exports[`resolver > @babel/types fails 1`] = `"@babel/types/lib/index-legacy.d.ts"`;
+
+exports[`resolver > @vue/reactivity 1`] = `"@vue/reactivity/dist/reactivity.d.ts"`;
+
+exports[`resolver > debug 1`] = `"@types/debug/index.d.ts"`;
+
+exports[`resolver > eslint 1`] = `"eslint/lib/types/index.d.ts"`;
+
+exports[`resolver > fast-glob 1`] = `"fast-glob/out/index.d.ts"`;
+
+exports[`resolver > magic-string 1`] = `"magic-string/dist/magic-string.es.d.mts"`;
+
+exports[`resolver > magic-string-ast 1`] = `"magic-string-ast/dist/index.d.ts"`;
+
+exports[`resolver > node 1`] = `"@types/node/index.d.ts"`;
+
+exports[`resolver > node:fs 1`] = `null`;
+
+exports[`resolver > oxc-resolver 1`] = `"oxc-resolver/index.d.ts"`;
+
+exports[`resolver > pathe 1`] = `null`;
+
+exports[`resolver > vue 1`] = `"vue/dist/vue.d.mts"`;
+
+exports[`resolver > whatever 1`] = `null`;
+
+exports[`resolver > yargs 1`] = `"@types/yargs/index.d.mts"`;

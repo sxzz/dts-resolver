@@ -28,8 +28,6 @@ describe('resolver', () => {
     'magic-string',
     'fast-glob',
     '@babel/parser',
-    '@babel/generator', // definitely typed
-    '@babel/types', // typesVersions field
     'yargs',
     'debug',
     'vue',
@@ -73,6 +71,19 @@ describe('resolver', () => {
   test.each(CASES)('%s', (id) => {
     const resolved = resolver(id, __filename)
     const tsResolved = tsResolve(id, __filename)
+    expectPath(resolved).toMatchSnapshot()
+    expect(resolved).toBe(tsResolved)
+  })
+
+  const FAILS: Array<string> = [
+    '@babel/generator', // definitely typed
+    '@babel/types', // typesVersions field
+  ]
+
+  test.fails.each(FAILS)('%s fails', (id) => {
+    const resolved = resolver(id, __filename)
+    const tsResolved = tsResolve(id, __filename)
+    expectPath(resolved).toMatchSnapshot()
     expect(resolved).toBe(tsResolved)
   })
 

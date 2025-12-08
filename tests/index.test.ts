@@ -69,8 +69,8 @@ describe('resolver', () => {
   ]
 
   test.each(CASES)('%s', (id) => {
-    const resolved = resolver(id, __filename)
-    const tsResolved = tsResolve(id, __filename)
+    const resolved = resolver(id, import.meta.filename)
+    const tsResolved = tsResolve(id, import.meta.filename)
     expectPath(resolved).toMatchSnapshot()
     expect(resolved).toBe(tsResolved)
   })
@@ -81,8 +81,8 @@ describe('resolver', () => {
   ]
 
   test.fails.each(FAILS)('%s fails', (id) => {
-    const resolved = resolver(id, __filename)
-    const tsResolved = tsResolve(id, __filename)
+    const resolved = resolver(id, import.meta.filename)
+    const tsResolved = tsResolve(id, import.meta.filename)
     expectPath(resolved).toMatchSnapshot()
     expect(resolved).toBe(tsResolved)
   })
@@ -94,10 +94,10 @@ describe('resolver', () => {
   })
 
   test('paths', () => {
-    const tsconfig = path.resolve(__dirname, './tsconfig-test.json')
+    const tsconfig = path.resolve(import.meta.dirname, 'tsconfig-test.json')
     const resolver = createResolver({ tsconfig })
-    expect(resolver('lib/alias.ts', __filename)).toBe(
-      tsResolve('lib/alias.ts', __filename, tsconfig),
+    expect(resolver('lib/alias.ts', import.meta.filename)).toBe(
+      tsResolve('lib/alias.ts', import.meta.filename, tsconfig),
     )
   })
 })

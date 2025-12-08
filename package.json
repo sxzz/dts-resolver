@@ -70,11 +70,13 @@
     "prettier": "^3.7.4",
     "tsdown": "^0.17.1",
     "typescript": "^5.9.3",
+    "vite": "^7.2.7",
     "vitest": "^4.0.15",
     "vue": "^3.5.25"
   },
   "prettier": "@sxzz/prettier-config",
   "tsdown": {
-    "exports": true
+    "exports": true,
+    "inlineOnly": []
   }
 }

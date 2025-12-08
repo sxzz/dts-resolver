@@ -6,6 +6,8 @@ import { createResolver } from '../src'
 
 const resolver = createResolver({ resolveNodeModules: true })
 
+const fixtures = path.resolve(import.meta.dirname, 'fixtures')
+
 function buildExts(name: string) {
   return [
     name,
@@ -98,6 +100,20 @@ describe('resolver', () => {
     const resolver = createResolver({ tsconfig })
     expect(resolver('lib/alias.ts', import.meta.filename)).toBe(
       tsResolve('lib/alias.ts', import.meta.filename, tsconfig),
+    )
+  })
+
+  test('no baseUrl', () => {
+    const root = path.resolve(fixtures, 'no-baseurl')
+    const tsconfig = path.resolve(root, 'tsconfig.json')
+    const filename = path.resolve(root, 'index.ts')
+    const resolver = createResolver({
+      tsconfig,
+      resolveNodeModules: true,
+    })
+
+    expect(resolver('vite', filename)).toBe(
+      tsResolve('vite', filename, tsconfig),
     )
   })
 })

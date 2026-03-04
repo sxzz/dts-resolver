@@ -142,9 +142,9 @@ function tsResolve(id: string, importer: string, tsconfig?: string) {
     id,
     importer,
     {
+      ...compilerOptions,
       moduleResolution: ts.ModuleResolutionKind.Bundler,
       resolveJsonModule: true,
-      ...compilerOptions,
     },
     ts.sys,
   )

@@ -108,7 +108,7 @@ exports[`resolver > node:fs 1`] = `null`;
 
 exports[`resolver > oxc-resolver 1`] = `"oxc-resolver/index.d.ts"`;
 
-exports[`resolver > pathe 1`] = `null`;
+exports[`resolver > pathe 1`] = `"pathe/dist/index.d.mts"`;
 
 exports[`resolver > vue 1`] = `"vue/dist/vue.d.mts"`;
 

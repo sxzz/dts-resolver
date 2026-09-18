@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/sxzz/dts-resolver/issues"
   },
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"

@@ -59,7 +59,7 @@
     "@types/node": "^25.6.0",
     "@types/yargs": "^17.0.35",
     "@vue/reactivity": "^3.5.33",
-    "bumpp": "^11.0.1",
+    "bumpp": "^12.0.0",
     "eslint": "^10.3.0",
     "fast-glob": "^3.3.3",
     "magic-string": "^0.30.21",

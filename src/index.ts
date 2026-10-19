@@ -1,5 +1,6 @@
 import { dirname, extname } from 'node:path'
 import process from 'node:process'
+import type { NapiResolveOptions } from 'oxc-resolver'
 
 export interface Options {
   cwd?: string
@@ -18,9 +19,8 @@ export function createResolver({
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   ResolverFactory ||= (require('oxc-resolver') as typeof import('oxc-resolver'))
     .ResolverFactory
-  const resolver = new ResolverFactory({
-    mainFields: ['types', 'typings', 'module', 'main'],
-    conditionNames: ['types', 'typings', 'import', 'require'],
+
+  const sharedConfigs = {
     extensions: [
       '.d.ts',
       '.d.mts',
@@ -49,13 +49,36 @@ export function createResolver({
     tsconfig: tsconfig
       ? { configFile: tsconfig, references: 'auto' }
       : undefined,
+  } satisfies NapiResolveOptions
+
+  const typesResolver = new ResolverFactory({
+    ...sharedConfigs,
+    mainFields: ['types', 'typings'],
+    conditionNames: ['types', 'typings'],
+  })
+  const modulesResolver = typesResolver.cloneWithOptions({
+    ...sharedConfigs,
+    mainFields: ['module', 'main'],
+    conditionNames: ['import', 'require'],
   })
 
   return (id: string, importer?: string): string | null => {
     const directory = importer ? dirname(importer) : cwd
 
-    const resolution = resolver.sync(directory, id)
-    if (!resolution.path) return null
+    let resolution = typesResolver.sync(directory, id)
+    // TODO: this is not safe currently,
+    // because the typesResolver may resolve to the `"default"` entry
+    // instead of `"types"` or `"typings"`.
+    // We don't have a way to check this currently.
+    // @see https://github.com/oxc-project/oxc-resolver/blob/main/src/lib.rs#L1713-L1714
+    if (!resolution.path) {
+      // If resolve types entries failed, then try resolving modules entries
+      resolution = modulesResolver.sync(directory, id)
+      if (!resolution.path) {
+        return null
+      }
+    }
+
     const resolved = resolution.path
     return ensureValue(resolved)
   }

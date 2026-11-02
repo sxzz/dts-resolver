@@ -56,7 +56,7 @@
     "@sxzz/prettier-config": "^2.3.1",
     "@types/babel__generator": "^7.27.0",
     "@types/debug": "^4.1.13",
-    "@types/node": "^25.6.0",
+    "@types/node": "^26.0.0",
     "@types/yargs": "^17.0.35",
     "@vue/reactivity": "^3.5.33",
     "bumpp": "^12.0.0",

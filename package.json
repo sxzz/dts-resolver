@@ -2,7 +2,7 @@
   "name": "dts-resolver",
   "type": "module",
   "version": "3.0.0",
-  "packageManager": "pnpm@11.28.11",
+  "packageManager": "pnpm@12.18.0",
   "description": "Resolves TypeScript declaration files for dependencies.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",

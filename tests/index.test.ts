@@ -29,6 +29,7 @@ describe('resolver', () => {
     'magic-string-ast',
     'magic-string',
     'fast-glob',
+    'hookable',
     '@babel/parser',
     'yargs',
     'debug',
